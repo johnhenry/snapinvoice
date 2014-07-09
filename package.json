@@ -1,0 +1,34 @@
+{
+	"name": "SnapInvoice",
+	"version": "0.0.0",
+	"description": "Dynamic Bitcoin Invoice Generator",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js"
+	},
+	"dependencies":{
+			"connect":"2.7.x"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/johnhenry/snapinvoice"
+	},
+	"keywords": [
+		"payment",
+		"transfer",
+		"electronic",
+		"dynamic",
+		"bitcoin",
+		"invoice",
+		"generator",
+		"websockets",
+		"blockchain"
+	],
+	"author": "John Henry",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/johnhenry/snapinvoice/issues"
+	},
+	"homepage": "https://github.com/johnhenry/snapinvoice"
+}
