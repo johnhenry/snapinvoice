@@ -1,0 +1,33 @@
+{
+  "name": "snapinvoice",
+  "version": "0.0.0",
+  "homepage": "https://github.com/johnhenry/snapinvoice",
+  "authors": [
+    "John Henry <john@iamjohnhenry.com>"
+  ],
+  "description": "Dynamic Bitcoin Invoice Generator",
+  "main": "index.html",
+  "keywords": [
+    "dynamic",
+    "bitcoin",
+    "invoice",
+    "generator",
+    "payment",
+    "electronic"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.2.0",
+    "1c78ccd71ef6418dcdb6bafac43fbc89aec724ab": "https://github.com/davidshimjs/qrcodejs/commit/1c78ccd71ef6418dcdb6bafac43fbc89aec724ab",
+    "qrcodejs": "https://github.com/davidshimjs/qrcodejs.git"
+  }
+}

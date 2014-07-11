@@ -1,0 +1,23 @@
+.body .panel {
+  border-radius: 0px !important;
+  text-align:center;
+  min-height:100%;
+}
+
+.red {
+  color: #ee2929;
+}
+.green {
+  color: #73d216;
+}
+.yellow {
+  color: #f57900;
+}
+.well.well-sm{
+  margin:10px
+}
+
+#qrcode img{
+    width: 128px;
+    height: 128px;
+}

@@ -1,0 +1,74 @@
+<div class="panel panel-info">
+    <div class="panel-heading">Create Invoice</div>
+    <div class="panel-body">
+        <form role="form" id="create">
+          <div class="form-group">
+            <label for="amount">Invoice Amount (BTC)</label>
+            <input name="amount" id="amount" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Invoice Amount" class="form-control" value="1">
+          </div>
+          <div class="form-group">
+            <label for="expiration" z>Expiration</label>
+            <select name="expiration" id="expiration" class="form-control">
+                <option value="15" x-calc="15" selected>15 seconds</option>
+                <option value="60" x-calc="60">1 minute</option>
+                <option value="300" x-calc="60*5">5 minutes</option>
+                <option value="900" x-calc="60*15">15 minutes</option>
+                <option value="3600" x-calc="60*60">1 hour</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="payto">Pay To Address</label>
+            <input name="payto" type="text" class="form-control" id="payto" placeholder="" class="form-control" value="1HZwkjkeaoZfTSaJxDw6aKkxp45agDiEzN">
+          </div>
+            <ul id="errors" style="display:none">
+
+            </ul>
+          <button type="button" class="btn btn-primary" onclick="createInvoice();false" class="form-control">Create Invoice</button>
+        </form>
+        <div id="creating" style="display:none">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+              </div>
+            </div>
+        </div>
+        <center id="created" style="display:none; width:100%">
+            
+        </center>
+    </div>
+</div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+    var createInvoice = function(){
+        $("#create").hide();
+        $("#creating").show();
+
+        var ajax = $.ajax({
+            type: "POST",
+            url: "/api/1/",
+            data: $("#create").serialize(), // serializes the form's elements.
+        });
+        
+        ajax.done(function(invoice){
+            var invoiceUrl = window.location.protocol + "//" +window.location.host + "/" + invoice._id;
+                $("#created").html("Your Invoice Url : <a href=\""+invoiceUrl+"\" target=\"_blank\">"+invoiceUrl+"</a>");
+                $("#creating").hide();
+                $("#created").show();
+                //Show link to new Invoice
+                console.log(invoice);
+        });
+        
+        ajax.fail(function(error){
+            error = error.responseJSON;
+            var errors = "";
+            for(var i = 0; i < error.errors.length; i++){
+                errors += "<li>" + error.errors[i] + "</li>";
+            }
+            $("#errors").html(errors);
+            $("#errors").show();
+            $("#creating").hide();
+            $("#create").show();
+            //Dont
+            console.log(error);
+        });
+    }
+</script>

@@ -1,0 +1,10 @@
+<div class="panel panel-danger">
+    <div class="panel-heading">Open Invoice:<%= _id %></div>
+        <div class="panel-body">
+            <p class="red">Invoice <%= _id %> has expired.</p>
+            <p>Bitcoin sent to previous addresses will not count towards this invoice and <a href="#" title="Let's be honest -- You ain't gettin' yo money back!">may</a> not be refunded.</p>
+            <span class="red glyphicon glyphicon-remove" style="display:block;font-size:40px;margin:10px;"></span>
+            The total of <span class="red"><%= amount %> BTC</span> was delequent by <span class="red"><%= due %> BTC :(</span>.
+        </div>
+       </div>
+</div>

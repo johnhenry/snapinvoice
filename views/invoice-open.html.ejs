@@ -1,0 +1,49 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Open Invoice:<%= _id %></div>
+    <div class="panel-body">
+        <p><span class="green"><%= (amount - due) %> BTC</span> of <span class="green"><%= (amount) %> BTC</span> have been paid.</p>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" 
+               role="progressbar" 
+               aria-valuenow="<%= (amount - due) %>" 
+               aria-valuemin="0" 
+               aria-valuemax="<%= amount %>" 
+               style="width: <%= 100 * (amount - due)/amount %>%;">
+          </div>
+        </div>
+        <p>Please send <span class="green"><%= (due) %> BTC</span> to the following address to complete payment.</p>
+        <div id="qrcode"></div>
+        <strong><%= addresses[addresses.length -1] %></strong>
+        <p>Invoice Expires in <span id="countdown" class="red"></span> seconds.</p>
+        
+        <p>If this invoice is partially paid, there may be additional addresses associated with it.</p>
+        <p>While older addresses will work, please send payments to the most recently generated address.</p>
+        <p>You may refresh this page to ensure that the address above is the most recent.</p>
+    
+    </div>
+</div>
+<script src="/bower_components/qrcodejs/qrcode.min.js" ></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+//QR Code
+var qrcode = document.getElementById("qrcode");
+new QRCode(qrcode, "<%= addresses[addresses.length -1] %>");
+//Count Down To Expiration
+var countDown = document.getElementById("countdown");
+var expiration = <%= expiration %> - Math.floor(Date.now()/1000);
+setInterval(function(){
+    expiration -= 1;
+    console.log(expiration);
+    if(expiration < 0){
+        window.location.reload(true);
+    }else{
+        countDown.innerHTML = expiration;
+    }
+},1000);
+//Socket
+    //set up socket connection to server
+  var socket = io.connect(window.location.protocol + "//" +window.location.host);
+  socket.on("<%= _id %>", function (data) {
+        window.location.reload(true);
+  });
+</script>
