@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">Open Invoice:<%= _id %></div>
     <div class="panel-body">
-        <p><span class="green"><%= (amount - due) %> BTC</span> of <span class="green"><%= (amount) %> BTC</span> have been paid.</p>
+        <p><span class="green"><%= (amount - due) %> Satoshis</span> of <span class="green"><%= (amount) %> Satoshis</span> have been paid.</p>
         <div class="progress">
           <div class="progress-bar progress-bar-success" 
                role="progressbar" 
@@ -11,7 +11,7 @@
                style="width: <%= 100 * (amount - due)/amount %>%;">
           </div>
         </div>
-        <p>Please send <span class="green"><%= (due) %> BTC</span> to the following address to complete payment.</p>
+        <p>Please send <span class="green"><%= (due) %> Satoshis</span> to the following address to complete payment.</p>
         <div id="qrcode"></div>
         <strong><%= addresses[addresses.length -1] %></strong>
         <p>Invoice Expires in <span id="countdown" class="red"></span> seconds.</p>

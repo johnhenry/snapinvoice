@@ -3,22 +3,22 @@
     <div class="panel-body">
         <form role="form" id="create">
           <div class="form-group">
-            <label for="amount">Invoice Amount (BTC)</label>
-            <input name="amount" id="amount" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Invoice Amount" class="form-control" value="1">
+            <label for="amount">Invoice Amount (Satoshis)</label>
+            <input name="amount" id="amount" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Invoice Amount" class="form-control" value="0">
           </div>
           <div class="form-group">
             <label for="expiration" z>Expiration</label>
             <select name="expiration" id="expiration" class="form-control">
-                <option value="15" x-calc="15" selected>15 seconds</option>
+                <option value="15" x-calc="15" >15 seconds</option>
                 <option value="60" x-calc="60">1 minute</option>
-                <option value="300" x-calc="60*5">5 minutes</option>
+                <option value="300" x-calc="60*5" selected>5 minutes</option>
                 <option value="900" x-calc="60*15">15 minutes</option>
                 <option value="3600" x-calc="60*60">1 hour</option>
             </select>
           </div>
           <div class="form-group">
             <label for="payto">Pay To Address</label>
-            <input name="payto" type="text" class="form-control" id="payto" placeholder="" class="form-control" value="1HZwkjkeaoZfTSaJxDw6aKkxp45agDiEzN">
+            <input name="payto" type="text" class="form-control" id="payto" placeholder="" class="form-control" value="">
           </div>
             <ul id="errors" style="display:none">
 
