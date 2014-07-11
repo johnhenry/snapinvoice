@@ -102,9 +102,13 @@ app.post("/api/1/",function(req, res, next) {
 
 var createAddress = function(req, invoice, callback){
     var requestUrlPlus = "https://blockchain.info/api/receive?method=create&address=" + invoice.payTo + "&callback=" + encodeURIComponent(req.protocol + '://' + req.get('host') + "/update/" + invoice._id);
+    var requestUrlMinus = "https://blockchain.info/api/receive?method=create&address=" + invoice.payTo + "&callback=" + req.protocol + '://' + req.get('host') + "/update/" + invoice._id;
     var requestUrl = "https://blockchain.info/api/receive?method=create&address=" + invoice.payTo;
-    https.get(requestUrlPlus, function(response) {
-        var body = '';
+    console.log(requestUrlMinus);
+    console.log(requestUrlPlus);
+    var body = '';
+    requestUrl = requestUrlPlus;
+    https.get(requestUrl, function(response) {
         response.on('data', function(chunk) {
             body += chunk;
         });
@@ -160,10 +164,11 @@ var createAddress = function(req, invoice, callback){
 //Recieve Updates About Invoices From Blockchain.info
 app.get("/update/:id", function(req, res, next) {
     //Note:Sending ok back to the blockchain.info api prevents further updates.
+    console.log("Update Attemted.");
     var id = req.body.id;
     var value = req.query.value;
     invoices.findOne({_id:ObjectID(id)},function(error, invoice){
-        if(error){
+        if(error || invoice === null){
             res.status(404);
             res.json({errors:[error]});
             return;
