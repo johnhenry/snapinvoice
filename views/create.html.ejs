@@ -36,7 +36,7 @@
         </center>
     </div>
 </div>
-<script src="./bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script>
     var createInvoice = function(){
         $("#create").hide();
@@ -50,7 +50,7 @@
         
         ajax.done(function(invoice){
             var invoiceUrl = window.location.protocol + "//" +window.location.host + "/" + invoice._id;
-                $("#created").html("Your Invoice Url : <a href=\""+invoiceUrl+"\" target=\"_blank\">"+invoiceUrl+"</a>");
+                $("#created").html("Your Invoice Url : <a href=\""+invoiceUrl+"\" target=\"_blank\" style=\"word-break:break-all;\">"+invoiceUrl+"</a>");
                 $("#creating").hide();
                 $("#created").show();
                 //Show link to new Invoice
